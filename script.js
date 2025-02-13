@@ -1,4 +1,7 @@
-// Function to handle button click events
+ document.addEventListener("DOMContentLoaded", function() {
+    displayKiss();
+});
+
 function selectOption(option) {
     if (option === 'yes') {
         flashRainbowColors(function() {
@@ -34,8 +37,9 @@ function flashRainbowColors(callback) {
 
 function displayKiss() {
     var imageContainer = document.getElementById('image-container');
+    if (!imageContainer) return;
     var kissImage = new Image();
-    kissImage.src = '/mnt/data/kiss.gif';
+    kissImage.src = 'kiss.gif';
     kissImage.alt = 'Kiss';
     kissImage.onload = function() {
         imageContainer.appendChild(kissImage);
@@ -43,15 +47,16 @@ function displayKiss() {
 }
 
 function displayCatJumping() {
-    document.getElementById('image-container').innerHTML = '';
     var imageContainer = document.getElementById('image-container');
+    if (!imageContainer) return;
+    imageContainer.innerHTML = '';
     var catJumpingImage = new Image();
-    catJumpingImage.src = '/mnt/data/cat jumping.gif';
+    catJumpingImage.src = 'cat jumping.gif';
     catJumpingImage.alt = 'Cat Jumping';
     catJumpingImage.onload = function() {
         imageContainer.appendChild(catJumpingImage);
-        document.getElementById('options').style.display = 'none';
+        var options = document.getElementById('options');
+        if (options) options.style.display = 'none';
     };
 }
 
-displayKiss();
